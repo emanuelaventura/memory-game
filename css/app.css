@@ -1,0 +1,263 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url('../img/LOVE.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+  align-self: center;
+  margin-top: 1em;
+}
+
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+   font-size: 5vh;
+   color: #000066;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+.deck {
+    background:  #5267b8a6;
+    padding: 1vh;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-self: center;
+    align-items: center;
+    margin: 0, auto, 0, auto;
+	  /* Square responsive deck			*/
+	  max-width: 80vw;
+	  max-height: 80vw;
+}
+
+/*
+ * Styles for the cards
+ */
+.deck .card {
+    /* square cards with min size for small screens		*/
+    min-width: 48px;
+	  min-height: 48px;
+    height: 12vw;
+    width: 12vw;
+    background-color: #000066;
+    font-size: 0;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    margin: 5px;
+    transition: all .4s linear;
+    transform-style: preserve-3d;
+}
+
+/*
+ * When a card is clicked, it is flipped
+ */
+.deck .card.open {
+    transform: rotateY(180deg);
+    cursor: default;
+}
+
+/*
+ * Show the card increasing the font of the icons inside
+ */
+.deck .card.show {
+    font-size: 4vw;
+}
+
+/*
+ * If a card is already clicked than you can't click it again
+ */
+.deck .card.disabled {
+    pointer-events: none;
+}
+
+/*
+ * Styles for two cards that match
+ */
+.deck .card.match {
+    cursor: default;
+    background: linear-gradient(160deg, #f48cbc 0%, #fbcedb 100%);
+    font-size: 4vw;
+}
+
+/*
+ * Styles for two cards that don't match
+ */
+.deck .card.no-match {
+    cursor: default;
+    background: red;
+    font-size: 4vw;
+    color: white;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+  .score-panel {
+      color: white;
+      background-color: #000066;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      font-size: 2vh;
+      align-self: center;
+      align-items: center;
+      margin: 1em;
+      width: 90vw;
+      min-height: 5%;
+      max-height: 10%;
+      justify-content: space-evenly;
+  }
+
+  .score-panel .stars {
+      padding-left: 0;
+      display: inline-block;
+      color: #fed01f;
+  }
+
+  .score-panel .stars li {
+      list-style: none;
+      display: inline-block;
+  }
+
+  .score-panel .restart {
+      margin: 1em;
+      cursor: pointer;
+  }
+
+ .moves{
+     margin: 1em;
+ }
+
+ /*
+  * Styles for the footer
+  */
+footer {
+  background-color: #000066;
+  color: white;
+  text-align: center;
+  width: 100vw;
+  min-height: 5vh;
+  max-height: 10vh;
+  font-size: 2vh;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+footer a {
+  color: white
+}
+
+/*
+ * Styles for the modal
+ */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(114, 97, 97, 0.73); /* opacity */
+}
+
+/*
+ * Modal content
+ */
+.modal_content {
+    text-align: center;
+    background-color: #fbcedb;
+    margin-left: auto ;
+    margin-right: auto ;
+    margin-top: 20vh;
+    margin-bottom: auto ;
+    max-width: 50vw;
+    max-height: 65vh;
+    padding: 5%;
+    color: #000066;
+    border: 1px solid #000066;
+    font-size: 3vw;
+}
+
+.modal_title {
+    font-size: 3.5vw;
+    color: #f48cbc;
+    font-weight: bold;
+}
+
+#restart_game_from_modal_btn {
+    min-width: 48px;
+    min-height:48px;
+    max-height: 6vh;
+    max-width: 15vw;
+    padding: 0.5vw;
+    font-size:2.5vw;
+    margin-bottom: 2em;
+    background-color: #f48cbc;
+    color: #000066;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+@media screen and (min-width: 350px) and (max-width: 950px)  {
+  .deck .card {
+      height: 15vw;
+      width: 15vw;
+  }
+}
+
+@media screen and (min-width: 951px)   {
+  .deck .card {
+      height: 8vw;
+      width: 8vw;
+  }
+  .deck  {
+      height: 50vh;
+      width: 100vw;
+  }
+
+  .modal_content {
+    max-height: 75vh;
+    font-size:1.7vw;
+    padding: 0;
+  }
+}
